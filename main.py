@@ -5,6 +5,7 @@ from card import*
 from magiccard import*
 from trapcard import*
 from creaturecard import*
+from actioncard import*
 
 # ------>>>> The code below is an example of the class methods!
 
@@ -12,7 +13,7 @@ magic = MagicCard()
 trap = TrapCard()
 creature = CreatureCard()
 
-#card types can be: 
+#card types can be:
 print "CARD TYPES:", Card.card_types
 
 #creature types can be:
@@ -20,6 +21,12 @@ print "CREATURE TYPES:", CreatureCard.creature_types
 
 #trap types can be:
 print "TRAP TYPES:", TrapCard.trap_types
+
+#action card types can be:
+print "ACTION CARD TYPES:", ActionCard.action_types
+
+#magic card types can be:
+print "MAGIC CARD TYPES:", MagicCard.magic_types
 
 
 #Defining a creature using array
