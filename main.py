@@ -1,6 +1,7 @@
 import sys
 sys.path.append("classes/cards/")
 
+from card import*
 from magiccard import*
 from trapcard import*
 from creaturecard import*
@@ -11,13 +12,32 @@ magic = MagicCard()
 trap = TrapCard()
 creature = CreatureCard()
 
-all= [creature.name("Bad Cobra"),
-creature.card_type("animal"),
+#card types can be: 
+print "CARD TYPES:", Card.card_types
+
+#creature types can be:
+print "CREATURE TYPES:", CreatureCard.creature_types
+
+#trap types can be:
+print "TRAP TYPES:", TrapCard.trap_types
+
+
+#Defining a creature using array
+badcobra = [creature.name("Bad Cobra"),
+creature.card_type("creature"),
 creature.creature_type("animal"),
 creature.atack(5),
 creature.defense(3)]
 
-print all
+print "\n\n", badcobra
+
+
+#Defining a creature using array
+magicpunishment = [trap.name("Magic Punishment"),
+trap.card_type("trap"),
+]
+
+print "\n\n", magicpunishment
 
 
 
