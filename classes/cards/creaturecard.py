@@ -11,9 +11,9 @@ class CreatureCard(card.Card):
 
     creature_types= ("human", "animal", "magic_being", "shadow_being", "light_being")
 
-    def creature_type(self, creature_type):
-        """Defines the type of being the card has"""
-        if creature_type not in self.creature_types:
+    def creature_type(self, creature):
+        """Defines the type of creature the card has"""
+        if creature not in self.creature_types:
            print "the creature type is not known"
-        return str(creature_type)
+        return str(creature)
 

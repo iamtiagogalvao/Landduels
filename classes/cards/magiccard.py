@@ -10,8 +10,8 @@ class MagicCard(card.Card):
 	
     magic_types = ("physical", "magical", "affect_player", "affect_enemy")
 	
-    def power(self, magic):
-        """Defines the type of power the card has"""
+    def magic_type(self, magic):
+        """Defines the type of magic the card has"""
         if magic not in self.magic_types:
            print "the magic type is not known"
         return str(magic)
