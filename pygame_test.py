@@ -3,6 +3,7 @@ import pygame
 from pygame import * # I am using namespace so I don't need to be always calling pygame.something
 sys.path.append("classes/cards/")
 
+from Tkinter import*
 from card import*
 from magiccard import*
 from trapcard import*
@@ -44,9 +45,9 @@ while not finished:
             finished = True
 
 
-	gameDisplay.fill(black)
-	gameDisplay.blit(text, (400 - text.get_width() // 2, 100 - text.get_height() // 2))
-	gameDisplay.blit(play_button, (400 - play_button.get_width() // 2, 350 - play_button.get_height() // 2))
+        gameDisplay.fill(black)
+        gameDisplay.blit(text, (400 - text.get_width() // 2, 100 - text.get_height() // 2))
+        gameDisplay.blit(play_button, (400 - play_button.get_width() // 2, 350 - play_button.get_height() // 2))
 	
 	
     display.update()
