@@ -1,4 +1,5 @@
 import sys
+import pygame
 sys.path.append("classes/cards/")
 
 from card import*
