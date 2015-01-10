@@ -1,6 +1,6 @@
 '''##########################################################
    # Armor CLASS -> defines the armor cards
-   # Created: 2015 - 01 - 09 ||| Last review: 2015 - 01 - xx
+   # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 import card

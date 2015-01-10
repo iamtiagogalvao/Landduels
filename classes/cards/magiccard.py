@@ -1,6 +1,6 @@
 '''##########################################################
    # MagicCard CLASS -> defines the magic cards
-   # Created: 2015 - 01 - 09 ||| Last review: 2015 - 01 - xx
+   # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 import card
