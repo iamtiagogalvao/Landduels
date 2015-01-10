@@ -6,3 +6,5 @@ Please take a look at our <a href="https://github.com/Slaveworx/Landduels/wiki">
 <p>Contact US: doit@slaveworx.esy.es</p>
 <p>Fork this: https://github.com/Slaveworx/Landduels/fork</p>
 
+<a href="http://www.indiedb.com/company/slaveworx-studios" title="View Slaveworx Studios on Indie DB" target="_blank"><img src="http://button.indiedb.com/popularity/medium/groups/17070.png" alt="Slaveworx Studios" /></a>
+
