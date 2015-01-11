@@ -26,7 +26,7 @@ class StarterDeck:
     armor = Armor()
 
     magic_cards = {"name": magic.name("Wiseman"),
-                    "type" : magic.magic_type("physical")
+                    "type" : magic.magic_type("physical"),
                     "image" : "res/img/wiseman.png"}
 
     """trap_cards =

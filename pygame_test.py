@@ -13,6 +13,10 @@ from actioncard import*
 from weapon import*
 from armor import*
 
+from events.event import PyGameEventProcessor
+from controllers.mouse_controller import MouseController
+from controllers.game_state_controller import GameStateController
+
 init()
 
 ### DIMENSIONS ###
@@ -46,25 +50,22 @@ play_button = image.load("res/img/play.png")
 
 card_image = image.load(deck.magic_cards["image"])
 
-
-
+### CONTROLLERS HANDLE GAME EVENTS ###
+event_processor= PyGameEventProcessor()
+game_state_controller= GameStateController(event_processor)
+mouse_controller= MouseController(event_processor)
 
 ### MAIN LOOP ###
-while not finished:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            finished = True
+while game_state_controller.is_running():
+    event_processor.process_events()
 
+    gameDisplay.fill(black)
+    gameDisplay.blit(title, (400 - title.get_width() // 2, 100 - title.get_height() // 2))
+    gameDisplay.blit(play_button, (400 - play_button.get_width() // 2, 350 - play_button.get_height() // 2))
+    gameDisplay.blit(names, (400 - names.get_width() // 2, 400 - names.get_height() // 2))
+    gameDisplay.blit(card_image, (400 - card_image.get_width() // 2, 400 - card_image.get_height() // 2))
 
-        gameDisplay.fill(black)
-        gameDisplay.blit(title, (400 - title.get_width() // 2, 100 - title.get_height() // 2))
-        gameDisplay.blit(play_button, (400 - play_button.get_width() // 2, 350 - play_button.get_height() // 2))
-        gameDisplay.blit(names, (400 - names.get_width() // 2, 400 - names.get_height() // 2))
-        gameDisplay.blit(card_image, (400 - card_image.get_width() // 2, 400 - card_image.get_height() // 2))
-	
-	
     display.update()
     clock.tick(60)
-
 pygame.quit()
 
