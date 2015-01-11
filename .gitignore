@@ -1,0 +1,5 @@
+*.pyc
+
+# PyCharm project files
+*.iml
+.idea/
