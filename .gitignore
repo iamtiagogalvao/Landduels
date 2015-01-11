@@ -1,4 +1,8 @@
 *.pyc
+/classes/*.pyc
+/classes/cards/*.pyc
+/classes/controllers/*.pyc
+/classes/events/*.pyc
 
 # PyCharm project files
 *.iml
