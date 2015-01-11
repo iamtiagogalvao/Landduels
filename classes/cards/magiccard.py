@@ -8,7 +8,7 @@ import card
 class MagicCard(card.Card):
 
 	
-    magic_types = ("physical", "magical", "affect_player", "affect_enemy")
+    magic_types = ("physical", "magical")
 	
     def magic_type(self, magic):
         """Defines the type of magic the card has"""

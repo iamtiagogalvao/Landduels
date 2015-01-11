@@ -3,6 +3,9 @@
    # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
+import pygame
+from pygame import*
+
 
 class Card:
 
@@ -18,7 +21,12 @@ class Card:
     def name(self, name):
         return str(name)
 
+    def card_image(self, path):
+        path = image.load(path)
+        return path
+
     def card_type(self, card_type):
         if card_type not in self.card_types:
            print "the card type is not known"
         return str(card_type)
+
