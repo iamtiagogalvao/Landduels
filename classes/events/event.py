@@ -1,7 +1,7 @@
 import pygame
 from events.dispatch import EventDispatcher
 
-class Event:
+class Event(object):
     def __init__(self, event):
         self.data= event
 

@@ -1,7 +1,7 @@
 from events.event import QuitEvent
 from events.command import Command
 
-class GameStateController:
+class GameStateController(object):
     def __init__(self, event_processor):
         self._dispatcher= event_processor.get_dispatcher()
         self._connections= [
