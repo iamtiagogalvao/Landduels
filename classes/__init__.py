@@ -1,5 +1,6 @@
 __all__=[
     'cards',
     'controllers',
-    'events'
+    'events',
+    'starterdeck'
 ]

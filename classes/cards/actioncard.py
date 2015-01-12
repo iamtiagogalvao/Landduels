@@ -4,10 +4,9 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-import card
+from cards.card import Card
 
-class ActionCard(card.Card):
-
+class ActionCard(Card):
 
     action_types= ("player", "enemy")
 

@@ -4,10 +4,9 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-import card
+from cards.card import Card
 
-class CreatureCard(card.Card):
-
+class CreatureCard(Card):
 
     creature_types= ("human", "animal", "magic_being", "shadow_being", "light_being")
 

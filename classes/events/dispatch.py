@@ -1,4 +1,10 @@
+import logging
+
+module_logger= logging.getLogger('landduels.dispatch')
+module_logger.setLevel(logging.DEBUG)
+
 import weakref
+
 
 class EventDispatcher(object):
     def __init__(self):
@@ -30,6 +36,3 @@ class EventDispatcherEntry(object):
             self._dispatcher= dispatcher
             self._lookup= event
             self._subscriber= subscriber
-
-    def __del__(self):
-        print "Dispatcher entry deleted."

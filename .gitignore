@@ -4,6 +4,8 @@
 /classes/controllers/*.pyc
 /classes/events/*.pyc
 
+game.events.log
+
 # PyCharm project files
 *.iml
 .idea/
