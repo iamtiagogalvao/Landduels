@@ -11,26 +11,11 @@ from cards.actioncard import ActionCard
 from cards.weapon import Weapon
 from cards.armor import Armor
 
+magic = MagicCard()
+creature = CreatureCard()
 
-class StarterDeck:
-
-    magic = MagicCard()
-    trap = TrapCard()
-    creature = CreatureCard()
-    action = ActionCard()
-    weapon = Weapon()
-    armor = Armor()
-
-    magic_cards = {"name": magic.name("Wiseman"),
-                    "type" : magic.magic_type("physical"),
-                    "image" : "res/img/wiseman.png"}
-
-    """trap_cards =
-    creature_cards =
-    action_cards =
-    weapon_cards =
-    armor_cards ="""
+# COMMON CREATURES #
+"""The class names are the card's names, so then we will need to work on how to
+Actually sort the cards in the game. The atack will go from 1 to 20 and de defense too"""
 
 
-    def show(self):
-        pass

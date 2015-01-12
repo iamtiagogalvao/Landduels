@@ -8,7 +8,7 @@ from cards.card import Card
 
 class CreatureCard(Card):
 
-    creature_types= ("human", "animal", "magic_being", "shadow_being", "light_being")
+    creature_types = ("human", "animal", "magic_being", "shadow_being", "light_being")
 
     def creature_type(self, creature):
         """Defines the type of creature the card has"""

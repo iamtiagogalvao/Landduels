@@ -23,6 +23,9 @@ class Card(object):
         path = image.load(path)
         return path
 
+    def mana_cost(self, cost):
+        return int(cost)
+
     def card_type(self, card_type):
         if card_type not in self.card_types:
            print "the card type is not known"
