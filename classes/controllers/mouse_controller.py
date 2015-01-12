@@ -1,7 +1,12 @@
+import logging
+
+module_logger= logging.getLogger('landduels.mouse_controller')
+module_logger.setLevel(logging.DEBUG)
+
 from events.command import Command
 from events.event import MouseMoveEvent
 
-class MouseController:
+class MouseController(object):
     def __init__(self, event_processor):
         self._dispatcher= event_processor.get_dispatcher()
         self._connections= [
@@ -9,4 +14,9 @@ class MouseController:
         ]
 
     def on_mouse_move(self, event):
-        print "Mouse move event: {0}".format(event.data.pos)
+        module_logger.info("MouseController: Mouse move event: {0}".format(event.data.pos))
+
+        # Testing unsubscribing from events
+        if event.data.pos == (100, 100):
+            #self._dispatcher.unsubscribe_from_event(MouseMoveEvent, self._connections[0])
+            self._connections= []

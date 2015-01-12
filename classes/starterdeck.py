@@ -3,20 +3,16 @@
    # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
-import sys
-sys.path.append("cards/")
 
-from card import*
-from magiccard import*
-from trapcard import*
-from creaturecard import*
-from actioncard import*
-from weapon import*
-from armor import*
+from cards.magiccard import MagicCard
+from cards.trapcard import TrapCard
+from cards.creaturecard import CreatureCard
+from cards.actioncard import ActionCard
+from cards.weapon import Weapon
+from cards.armor import Armor
 
 
 class StarterDeck:
-
 
     magic = MagicCard()
     trap = TrapCard()

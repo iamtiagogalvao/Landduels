@@ -4,10 +4,9 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-import card
+from cards.card import Card
 
-class TrapCard(card.Card):
-
+class TrapCard(Card):
 
     trap_types = ("player", "enemy")
 

@@ -1,6 +1,6 @@
 import weakref
 
-class Command:
+class Command(object):
     def __init__(self, method):
         self._self = weakref.ref(method.__self__)
         self._func = method.__func__

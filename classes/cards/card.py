@@ -3,12 +3,10 @@
    # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
-import pygame
-from pygame import*
 
+from pygame import image
 
-class Card:
-
+class Card(object):
 
     card_types = ("creature", "magic", "trap", "action", "armor", "weapon")
 

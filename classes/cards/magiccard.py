@@ -3,17 +3,17 @@
    # Created: 2015 - 01 - 09
    # Slaveworx, (add your credits here joe)
    #########################################################'''
-import card
 
-class MagicCard(card.Card):
+from cards.card import Card
 
-	
+class MagicCard(Card):
+
     magic_types = ("physical", "magical")
-	
+
     def magic_type(self, magic):
         """Defines the type of magic the card has"""
         if magic not in self.magic_types:
-           print "the magic type is not known"
+            print "the magic type is not known"
         return str(magic)
 
 
