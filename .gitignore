@@ -3,6 +3,10 @@
 /classes/cards/*.pyc
 /classes/controllers/*.pyc
 /classes/events/*.pyc
+/classes/screens/*.pyc
+/classes/models/*.pyc
+/classes/util/*.pyc
+/classes/views/*.pyc
 
 game.events.log
 

@@ -11,6 +11,14 @@ class QuitEvent(Event):
 class MouseMoveEvent(Event):
     pass
 
+class MouseEnteredButtonEvent(Event):
+    def __init__(self, button):
+        self.button = button
+
+class MouseLeftButtonEvent(Event):
+    def __init__(self, button):
+        self.button = button
+
 _event_lookup = {
     pygame.QUIT : QuitEvent,
     pygame.MOUSEMOTION : MouseMoveEvent
