@@ -4,20 +4,30 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-from cards.card import Card
+from cards.card import Card, CardTypes
+from util.enum import enum
+
+MagicTypes = enum("Invalid", "Physical", "Magical")
 
 class MagicCard(Card):
 
-    def __init__(self, image):
-        super(MagicCard, self).__init__(image)
+    def __init__(self, *args, **kwargs):
+        super(MagicCard, self).__init__(*args, **kwargs)
 
-    magic_types = ("physical", "magical")
+    def verify_args(self, *args, **kwargs):
+        super(MagicCard, self).verify_args(*args, **kwargs)
 
-    def magic_type(self, magic):
-        """Defines the type of magic the card has"""
-        if magic not in self.magic_types:
-            print "the magic type is not known"
-        return str(magic)
+        self.card_type = CardTypes.Magic
+
+        if kwargs.has_key("magic_type"):
+            self.magic_type = kwargs["magic_type"]
+        else:
+            self.magic_type = MagicTypes.Invalid
+
+    def __repr__(self):
+        return "{0}\nMagic Type: {1}".format(
+            super(MagicCard, self).__repr__(),
+            list(MagicTypes.__dict__)[MagicTypes.__dict__.values().index(self.magic_type)])
 
 
 

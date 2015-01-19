@@ -10,3 +10,6 @@ def enum(*sequential, **named):
 # 0
 # >>> Numbers.ONE
 # 1
+
+def values(enumtype):
+    return tuple([k for k,v in enumtype.__dict__.items() if type(v) is int])

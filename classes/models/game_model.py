@@ -9,7 +9,7 @@ class GameModel(Model):
         self.connections = []
         self.basic_font = "res/fonts/basic_bold.ttf"
         self.title = pygame.font.Font(self.basic_font, 24)
-        self.card = ActionCard("res/img/wiseman.png")
+        self.card = ActionCard(image="res/img/wiseman.png")
         self.card.scale_card_image(0.33)
         self.card.position_card_image(400, 310)
         self.cards = Group(self.card)

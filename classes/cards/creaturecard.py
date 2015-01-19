@@ -4,18 +4,28 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-from cards.card import Card
+from cards.card import Card, CardTypes
+from util.enum import enum
+
+CreatureTypes = enum("Invalid", "Human", "Animal", "MagicBeing", "ShadowBeing", "LightBeing")
 
 class CreatureCard(Card):
 
-    def __init__(self, image):
-        super(CreatureCard, self).__init__(image)
+    def __init__(self, *args, **kwargs):
+        super(CreatureCard, self).__init__(*args, **kwargs)
 
-    creature_types = ("human", "animal", "magic_being", "shadow_being", "light_being")
+    def verify_args(self, *args, **kwargs):
+        super(CreatureCard, self).verify_args(*args, **kwargs)
 
-    def creature_type(self, creature):
-        """Defines the type of creature the card has"""
-        if creature not in self.creature_types:
-           print "the creature type is not known"
-        return str(creature)
+        self.card_type = CardTypes.Creature
+
+        if kwargs.has_key("creature_type"):
+            self.creature_type = kwargs["creature_type"]
+        else:
+            self.creature_type = CreatureTypes.Invalid
+
+    def __repr__(self):
+        return "{0}\nCreature Type: {1}".format(
+            super(CreatureCard, self).__repr__(),
+            list(CreatureTypes.__dict__)[CreatureTypes.__dict__.values().index(self.creature_type)])
 

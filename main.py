@@ -1,69 +1,65 @@
-import sys
 import pygame
-sys.path.append("classes/cards/")
-
-from card import*
-from magiccard import*
-from trapcard import*
-from creaturecard import*
-from actioncard import*
-from weapon import*
-from armor import*
+from cards.card import *
+from cards.magiccard import *
+from cards.trapcard import *
+from cards.creaturecard import *
+from cards.actioncard import *
+from cards.weapon import *
+from cards.armor import *
+from util.enum import values
 
 # ------>>>> The code below is an example of the class methods!
 
-magic = MagicCard()
-trap = TrapCard()
-creature = CreatureCard()
-weapon = Weapon()
-armor = Armor()
-actioncard = ActionCard()
-
+# For whatever reason, cards having images requires pygame display to be initialized.
+pygame.init()
+pygame.display.set_mode((800, 600), pygame.HWSURFACE)
 
 #card types can be:
-print "CARD TYPES:", Card.card_types
+print "CARD TYPES:", values(CardTypes)
 
 #creature types can be:
-print "CREATURE TYPES:", CreatureCard.creature_types
+print "CREATURE TYPES:", values(CreatureTypes)
 
 #trap types can be:
-print "TRAP TYPES:", TrapCard.trap_types
+print "TRAP TYPES:", values(TrapTypes)
 
 #action card types can be:
-print "ACTION CARD TYPES:", ActionCard.action_types
+print "ACTION CARD TYPES:", values(ActionTypes)
 
 #magic card types can be:
-print "MAGIC CARD TYPES:", MagicCard.magic_types
+print "MAGIC CARD TYPES:", values(MagicTypes)
 
 #weapon types can be:
-print "WEAPON TYPES CAN BE:", Weapon.weapon_types
+print "WEAPON TYPES CAN BE:", values(WeaponTypes)
 
 #armor types can be:
-print "ARMOR TYPES CAN BE:", Armor.armor_types
+print "ARMOR TYPES CAN BE:", values(ArmorTypes)
 
 
-#Defining a creature using array
-badcobra = [creature.name("Bad Cobra"),
-            creature.card_type("creature"),
-            creature.creature_type("animal"),
-            creature.atack(5),
-            creature.defense(3)]
+# Define creature with CreatureCard class
+badcobra = CreatureCard(
+    name="Bad Cobra",
+    card_type=CardTypes.Creature,
+    creature_type=CreatureTypes.Animal,
+    attack=5,
+    defense=3)
 
 print "\n\n", badcobra
 
 
-#Defining a trap using array
-magicpunishment = [trap.name("Magic Punishment"),
-                    trap.card_type("trap"),
-                    trap.trap_type("player")]
+#Defining a trap using TrapCard
+magicpunishment = TrapCard(
+    name="Magic Punishment",
+    card_type=CardTypes.Trap,
+    trap_type=TrapTypes.Player)
 
 print "\n\n", magicpunishment
 
-#Defining a magic card using array
-lavawind = [magic.name("Lava Wind"),
-            magic.card_type("magic"),
-            magic.magic_type("physical")]
-
+#Defining a magic card using MagicCard
+lavawind = MagicCard(
+    name="Lava Wind",
+    card_type=CardTypes.Magic,
+    magic_type=MagicTypes.Physical)
 
 print "\n\n", lavawind
 

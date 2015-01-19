@@ -6,41 +6,15 @@
 
 import pygame
 from pygame.sprite import Sprite
+from util.enum import enum
+
+CardTypes = enum("Invalid", "Creature", "Magic", "Trap", "Action", "Armor", "Weapon")
 
 class Card(Sprite):
 
-    def __init__(self, image):
+    def __init__(self, *args, **kwargs):
         super(Card, self).__init__()
-        self._image = self.card_image(image)
-        self.image = self._image.copy()
-        self.rect = self.image.get_rect()
-        self._scale = 1.0
-        self._angle = 0.0
-        self.y = 0
-        self.x = 0
-
-    card_types = ("creature", "magic", "trap", "action", "armor", "weapon")
-
-    def atack(self, atack):
-        return int(atack)
-
-    def defense(self, defense):
-        return int(defense)
-
-    def name(self, name):
-        return str(name)
-
-    def card_image(self, path):
-        self.image = pygame.image.load(path).convert_alpha()
-        return self.image
-
-    def mana_cost(self, cost):
-        return int(cost)
-
-    def card_type(self, card_type):
-        if card_type not in self.card_types:
-           print "the card type is not known"
-        return str(card_type)
+        self.verify_args(*args, **kwargs)
 
     def scale_card_image(self, factor):
         self._scale = factor
@@ -60,4 +34,54 @@ class Card(Sprite):
         self.x = x
         self.y = y
         self.rect.center= (self.x, self.y)
+
+    def verify_args(self, *args, **kwargs):
+        if kwargs.has_key("card_type"):
+            self.card_type = kwargs["card_type"]
+        else:
+            self.card_type = CardTypes.Invalid
+
+        if kwargs.has_key("mana_cost"):
+            self.mana_cost = kwargs["mana_cost"]
+        else:
+            self.mana_cost = 0
+
+        if kwargs.has_key("image"):
+            self._image = pygame.image.load(kwargs["image"]).convert()
+            self.image_path = kwargs["image"]
+        else:
+            self._image = pygame.image.load("res/img/wiseman.png").convert() # default
+            self.image_path = "res/img/wiseman.png"
+
+        if kwargs.has_key("name"):
+            self.name = kwargs["name"]
+        else:
+            self.name = "Unnamed"
+
+        if kwargs.has_key("attack"):
+            self.attack = kwargs["attack"]
+        else:
+            self.attack = 0
+
+        if kwargs.has_key("defense"):
+            self.defense = kwargs["defense"]
+        else:
+            self.defense = 0
+
+        # remaining defaults.
+        self.image = self._image.copy()
+        self.rect = self.image.get_rect()
+        self._scale = 1.0
+        self._angle = 0.0
+        self.y = 0
+        self.x = 0
+
+    def __repr__(self):
+        return "Card Name: {0}\nCard Image: {1}\nCard Type: {2}\nAttack: {3}\nDefense: {4}\nMana Cost: {5}".format(
+            self.name,
+            self.image_path,
+            list(CardTypes.__dict__)[CardTypes.__dict__.values().index(self.card_type)],
+            self.attack,
+            self.defense,
+            self.mana_cost)
 

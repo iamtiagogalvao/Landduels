@@ -4,17 +4,27 @@
    # Slaveworx, (add your credits here joe)
    #########################################################'''
 
-from cards.card import Card
+from cards.card import Card, CardTypes
+from util.enum import enum
+
+TrapTypes = enum("Invalid", "Player", "Enemy")
 
 class TrapCard(Card):
 
-    def __init__(self, image):
-        super(TrapCard, self).__init__(image)
+    def __init__(self, *args, **kwargs):
+        super(TrapCard, self).__init__(*args, **kwargs)
 
-    trap_types = ("player", "enemy")
+    def verify_args(self, *args, **kwargs):
+        super(TrapCard, self).verify_args(*args, **kwargs)
 
-    def trap_type(self, trap):
-        """Defines the type of trap the card has"""
-        if trap not in self.trap_types:
-           print "the trap is not known"
-        return str(trap)
+        self.card_type = CardTypes.Trap
+
+        if kwargs.has_key("trap_type"):
+            self.trap_type = kwargs["trap_type"]
+        else:
+            self.trap_type = TrapTypes.Invalid
+
+    def __repr__(self):
+        return "{0}\nTrap Type: {1}".format(
+            super(TrapCard, self).__repr__(),
+            list(TrapTypes.__dict__)[TrapTypes.__dict__.values().index(self.trap_type)])
