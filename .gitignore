@@ -11,5 +11,5 @@
 game.events.log
 
 # PyCharm project files
-*.iml
-.idea/
+#*.iml
+#.idea/
