@@ -25,9 +25,10 @@ class MagicCard(Card):
             self.magic_type = MagicTypes.Invalid
 
     def __repr__(self):
+        magic_types= MagicTypes.__dict__
         return "{0}\nMagic Type: {1}".format(
             super(MagicCard, self).__repr__(),
-            list(MagicTypes.__dict__)[MagicTypes.__dict__.values().index(self.magic_type)])
+            list(magic_types)[magic_types.values().index(self.magic_type)])
 
 
 

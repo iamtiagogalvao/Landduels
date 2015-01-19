@@ -96,7 +96,7 @@ class Game(object):
 
 if __name__ == "__main__":
     game = Game()
-    logger.info('Game: Calling Game::on_execute()...')
+    logger.info('Game: Calling Game.init()...')
     if game.init():
         game.run()
 

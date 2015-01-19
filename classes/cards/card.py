@@ -77,10 +77,11 @@ class Card(Sprite):
         self.x = 0
 
     def __repr__(self):
+        card_types= CardTypes.__dict__
         return "Card Name: {0}\nCard Image: {1}\nCard Type: {2}\nAttack: {3}\nDefense: {4}\nMana Cost: {5}".format(
             self.name,
             self.image_path,
-            list(CardTypes.__dict__)[CardTypes.__dict__.values().index(self.card_type)],
+            list(card_types)[card_types.values().index(self.card_type)],
             self.attack,
             self.defense,
             self.mana_cost)

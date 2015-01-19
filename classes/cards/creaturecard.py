@@ -25,7 +25,8 @@ class CreatureCard(Card):
             self.creature_type = CreatureTypes.Invalid
 
     def __repr__(self):
+        creature_types= CreatureTypes.__dict__
         return "{0}\nCreature Type: {1}".format(
             super(CreatureCard, self).__repr__(),
-            list(CreatureTypes.__dict__)[CreatureTypes.__dict__.values().index(self.creature_type)])
+            list(creature_types)[creature_types.values().index(self.creature_type)])
 

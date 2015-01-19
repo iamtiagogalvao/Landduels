@@ -25,6 +25,7 @@ class TrapCard(Card):
             self.trap_type = TrapTypes.Invalid
 
     def __repr__(self):
+        trap_types= TrapTypes.__dict__
         return "{0}\nTrap Type: {1}".format(
             super(TrapCard, self).__repr__(),
-            list(TrapTypes.__dict__)[TrapTypes.__dict__.values().index(self.trap_type)])
+            list(trap_types)[trap_types.values().index(self.trap_type)])

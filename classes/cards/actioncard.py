@@ -25,6 +25,7 @@ class ActionCard(Card):
             self.action_type = ActionTypes.Invalid
 
     def __repr__(self):
+        action_types= ActionTypes.__dict__
         return "{0}\nAction Type: {1}".format(
             super(ActionCard, self).__repr__(),
-            list(ActionTypes.__dict__)[ActionTypes.__dict__.values().index(self.action_type)])
+            list(action_types)[action_types.values().index(self.action_type)])

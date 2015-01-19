@@ -25,6 +25,7 @@ class Armor(Card):
             self.armor_type = ArmorTypes.Invalid
 
     def __repr__(self):
+        armor_types= ArmorTypes.__dict__
         return "{0}\nArmor Type: {1}".format(
             super(Armor, self).__repr__(),
-            list(ArmorTypes.__dict__)[ArmorTypes.__dict__.values().index(self.armor_type)])
+            list(armor_types)[armor_types.values().index(self.armor_type)])
