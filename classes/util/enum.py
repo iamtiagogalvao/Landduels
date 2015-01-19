@@ -10,5 +10,3 @@ def enum(*sequential, **named):
 # 0
 # >>> Numbers.ONE
 # 1
-
-ButtonStates = enum('NORMAL', 'MOUSEOVER', 'PRESSED')

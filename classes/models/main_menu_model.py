@@ -1,47 +1,54 @@
 import logging
-import weakref
 
 module_logger= logging.getLogger('landduels.main_menu_model')
 module_logger.setLevel(logging.DEBUG)
 
 import pygame
+from pygame.sprite import Group
 from models.model import Model
 from events.event import MouseEnteredButtonEvent, MouseLeftButtonEvent
 from events.command import Command
-from util.enum import ButtonStates
+from ui.button import Button
+
+class PlayButton(Button):
+
+    def __init__(self, id, imagepath, event_dispatcher, x ,y):
+        super(PlayButton, self).__init__(id, imagepath, event_dispatcher, x ,y)
+
+    def on_mouse_enter(self, event):
+        super(PlayButton, self).on_mouse_enter(event)
+        module_logger.info("PlayButton: on_mouse_enter called in play button.")
+        center = self.rect.center
+        self.image = pygame.transform.rotozoom(self.image, 0.0, 1.05)
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+
+
+    def on_mouse_leave(self, event):
+        super(PlayButton, self).on_mouse_leave(event)
+        module_logger.info("PlayButton: on_mouse_leave called in play button.")
+        center = self.rect.center
+        self.image = self._image.copy()
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+
 
 class MainMenuModel(Model):
 
     def __init__(self, event_dispatcher):
         super(MainMenuModel, self).__init__(event_dispatcher)
 
-        self._connections = [
-            self._dispatcher.subscribe_to_event(MouseEnteredButtonEvent, Command(self.on_mouse_enter_button)),
-            self._dispatcher.subscribe_to_event(MouseLeftButtonEvent, Command(self.on_mouse_leave_button))
-        ]
+        self.buttons= []
+        self.buttons.append(PlayButton("play_button", "res/img/play.png", event_dispatcher, 220, 300))
+
+        self.menu = Group(self.buttons)
 
         self.title_font = "res/fonts/title.ttf"
         self.basic_font = "res/fonts/basic.ttf"
         self.title = pygame.font.Font(self.title_font, 200)
 
-        self.play_button = {}
-        self.play_button["id"] = "play"
-        self.play_button["image"] = pygame.image.load("res/img/play.png").convert_alpha()
-        self.play_button["image"].get_rect(center=(300,300))
-        self.play_button["state"] = ButtonStates.NORMAL
-        self.play_button["scale"] = 1
-
-        self.buttons = {}
-        self.buttons[self.play_button["id"]]= self.play_button
-
     def on_mouse_enter_button(self, event):
-        button = self.buttons[event.button["id"]]
-        button["state"] = ButtonStates.MOUSEOVER
-        button["scale"] = 1.05
         module_logger.info("MainMenuModel: Mouse enter button event: {0}".format(event.button))
 
     def on_mouse_leave_button(self, event):
-        button = self.buttons[event.button["id"]]
-        button["state"] = ButtonStates.NORMAL
-        button["scale"] = 1
         module_logger.info("MainMenuModel: Mouse leave button event: {0}".format(event.button))

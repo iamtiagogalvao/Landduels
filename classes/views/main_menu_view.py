@@ -14,12 +14,7 @@ class MainMenuView(View):
         title = self._model.title.render("Land: Duels", True, (255, 255, 255))
         surface.blit(title, (400 - title.get_width() // 2, 100 - title.get_height() // 2))
 
-        play_button = self._model.play_button
-        play_button_image = play_button["image"]
-        width = int(play_button_image.get_width() * play_button["scale"])
-        height = int(play_button_image.get_height() * play_button["scale"])
-        scaled_button = pygame.transform.scale(play_button_image, (width, height) )
-        surface.blit(scaled_button, (play_button_image.get_rect()))
+        self._model.menu.draw(surface)
 
         pygame.display.flip()
 

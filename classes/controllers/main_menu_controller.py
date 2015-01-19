@@ -8,7 +8,7 @@ from controllers.controller import Controller
 from events.event import MouseMoveEvent
 from events.event import MouseEnteredButtonEvent, MouseLeftButtonEvent
 from events.command import Command
-from util.enum import ButtonStates
+from ui.button import ButtonState
 
 class MainMenuController(Controller):
 
@@ -30,15 +30,14 @@ class MainMenuController(Controller):
         self.connections = []
 
     def on_mouse_move(self, event):
-        #module_logger.info("MainMenuController: Mouse move event: {0}".format(event.data.pos))
+        for button in self._model.buttons:
+            if button.state == ButtonState.NORMAL:
+                if self.mouse_is_over(button.rect, event.data.pos):
+                    self.dispatcher.dispatch_event(MouseEnteredButtonEvent(button.id))
+            if button.state == ButtonState.MOUSEOVER:
+                if not self.mouse_is_over(button.rect, event.data.pos):
+                    self.dispatcher.dispatch_event(MouseLeftButtonEvent(button.id))
 
-        play_button = self._model.play_button
-        if play_button["state"] == ButtonStates.NORMAL:
-            if self.mouse_is_over(play_button["image"].get_rect(), event.data.pos):
-                self.dispatcher.dispatch_event(MouseEnteredButtonEvent(play_button))
-        if play_button["state"] == ButtonStates.MOUSEOVER:
-            if not self.mouse_is_over(play_button["image"].get_rect(), event.data.pos):
-                self.dispatcher.dispatch_event(MouseLeftButtonEvent(play_button))
 
     def get_model(self):
         return self._model
