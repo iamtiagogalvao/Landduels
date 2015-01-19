@@ -4,9 +4,14 @@ from views.view import View
 class MainMenuView(View):
     def __init__(self):
         self._model = None
+        self._connections = []
+        self._dispatcher = None
 
     def enter(self, event_dispatcher):
-        pass
+        self._dispatcher = event_dispatcher
+        self._connections = [
+
+        ]
 
     def render(self, surface):
         surface.fill((0,0,0))
@@ -19,7 +24,9 @@ class MainMenuView(View):
         pygame.display.flip()
 
     def exit(self):
-        pass
+        self._dispatcher = None
+        self._connections = []
+        self._model = None
 
     def get_model(self):
         return self._model

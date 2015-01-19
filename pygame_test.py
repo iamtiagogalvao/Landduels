@@ -57,7 +57,7 @@ class Game(object):
         height= int(self.config.get("Graphics", "Height"))
         self.display_surf= pygame.display.set_mode((width, height), pygame.HWSURFACE)
 
-        self.set_mvc(MainMenuModel(self.event_dispatcher), MainMenuView(), MainMenuController())
+        self.set_mvc(MainMenuModel(), MainMenuView(), MainMenuController())
 
         self.clock = pygame.time.Clock()
         return True
@@ -69,18 +69,21 @@ class Game(object):
         while self.is_running:
             self.clock.tick(60)
             dt = self.clock.get_time() / 1000.0
-
             self.event_processor.process_events()
             self.controller.update(dt)
             self.view.render(self.display_surf)
         pygame.quit()
 
     def set_mvc(self, model, view, controller):
+        if self.model:
+            self.model.exit()
         self.model = model
+        self.model.enter(self.event_dispatcher)
 
         if self.controller:
             self.controller.exit()
         self.controller = controller
+        self.controller.set_app(self)
         self.controller.set_model(self.model)
         self.controller.enter(self.event_dispatcher)
 

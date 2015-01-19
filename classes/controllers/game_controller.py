@@ -1,7 +1,6 @@
-import pygame
-from views.view import View
+from controllers.controller import Controller
 
-class GameView(View):
+class GameController(Controller):
     def __init__(self):
         self._model = None
         self.dispatcher = None
@@ -10,13 +9,8 @@ class GameView(View):
     def enter(self, event_dispatcher):
         self.dispatcher = event_dispatcher
 
-    def render(self, surface):
-        surface.fill((0,0,0))
-
-        title = self._model.title.render("Game View", True, (255, 255, 255))
-        surface.blit(title, (400 - title.get_width() // 2, 100 - title.get_height() // 2))
-
-        pygame.display.flip()
+    def update(self, dt):
+        pass
 
     def exit(self):
         self.dispatcher = None
@@ -29,3 +23,11 @@ class GameView(View):
         self._model = model
 
     model = property(get_model, set_model)
+
+    def get_app(self):
+        return self._app
+
+    def set_app(self, app):
+        self._app = app
+
+    app = property(get_app, set_app)

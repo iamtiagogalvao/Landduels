@@ -1,6 +1,12 @@
-
+from abc import ABCMeta, abstractmethod
 
 class Model(object):
-    def __init__(self, event_dispatcher):
-        self._dispatcher = event_dispatcher
-        self._connections = []
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def enter(self, event_dispatcher):
+        pass
+
+    @abstractmethod
+    def exit(self):
+        pass

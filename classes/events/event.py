@@ -19,6 +19,14 @@ class MouseLeftButtonEvent(Event):
     def __init__(self, button_id):
         self.id = button_id
 
+class ButtonClickedEvent(Event):
+    def __init__(self, button_id):
+        self.id = button_id
+
+class ButtonClickEndedEvent(Event):
+    def __init__(self, button_id):
+        self.id = button_id
+
 class MouseButtonDownEvent(Event):
     pass
 

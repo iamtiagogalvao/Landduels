@@ -7,8 +7,8 @@ import pygame
 from pygame.sprite import Sprite
 from events.event import MouseEnteredButtonEvent
 from events.event import MouseLeftButtonEvent
-from events.event import MouseButtonDownEvent
-from events.event import MouseButtonUpEvent
+from events.event import ButtonClickedEvent
+from events.event import ButtonClickEndedEvent
 from events.command import Command
 from util.enum import enum
 
@@ -23,11 +23,11 @@ class Button(Sprite):
         self._connections = [
             self.dispatcher.subscribe_to_event(MouseEnteredButtonEvent, Command(self.on_mouse_enter)),
             self.dispatcher.subscribe_to_event(MouseLeftButtonEvent, Command(self.on_mouse_leave)),
-            self.dispatcher.subscribe_to_event(MouseButtonDownEvent, Command(self.on_mouse_button_down)),
-            self.dispatcher.subscribe_to_event(MouseButtonUpEvent, Command(self.on_mouse_button_up))
+            self.dispatcher.subscribe_to_event(ButtonClickedEvent, Command(self.on_clicked)),
+            self.dispatcher.subscribe_to_event(ButtonClickEndedEvent, Command(self.on_click_ended))
         ]
 
-        self.id = None
+        self.id = id
 
         self.state = ButtonState.NORMAL
 
@@ -52,14 +52,14 @@ class Button(Sprite):
                 self.state = ButtonState.NORMAL
                 module_logger.info("Button: on_mouse_leave was called in base button.")
 
-    def on_mouse_button_down(self, event):
+    def on_clicked(self, event):
         if self.id == event.id:
             if self.state == ButtonState.MOUSEOVER:
                 self.state = ButtonState.PRESSED
-                module_logger.info("Button: on_mouse_button_down was called in base button.")
+                module_logger.info("Button: on_clicked was called in base button.")
 
-    def on_mouse_button_up(self, event):
+    def on_click_ended(self, event):
         if self.id == event.id:
             if self.state == ButtonState.PRESSED:
                 self.state = ButtonState.MOUSEOVER
-                module_logger.info("Button: on_mouse_button_up was called in base button.")
+                module_logger.info("Button: on_click_ended was called in base button.")

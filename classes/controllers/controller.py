@@ -25,3 +25,11 @@ class Controller(object):
         self.model = model
 
     model = abstractproperty(get_model, set_model)
+
+    def get_app(self):
+        return self.app
+
+    def set_app(self, app):
+        self.app = app
+
+    app = abstractproperty(get_app, set_app)
