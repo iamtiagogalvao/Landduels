@@ -8,6 +8,9 @@ from cards.card import Card
 
 class ActionCard(Card):
 
+    def __init__(self, image):
+        super(ActionCard, self).__init__(image)
+
     action_types= ("player", "enemy")
 
     def action_type(self, action):

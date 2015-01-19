@@ -8,6 +8,9 @@ from cards.card import Card
 
 class CreatureCard(Card):
 
+    def __init__(self, image):
+        super(CreatureCard, self).__init__(image)
+
     creature_types = ("human", "animal", "magic_being", "shadow_being", "light_being")
 
     def creature_type(self, creature):

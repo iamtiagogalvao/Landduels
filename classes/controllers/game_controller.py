@@ -1,16 +1,20 @@
 from controllers.controller import Controller
+import math
 
 class GameController(Controller):
     def __init__(self):
         self._model = None
         self.dispatcher = None
         self.connections = []
+        self.angle= 0
 
     def enter(self, event_dispatcher):
         self.dispatcher = event_dispatcher
 
     def update(self, dt):
-        pass
+        self.angle += 1
+        self.angle = self.angle % 360
+        self._model.card.rotate_card_image(self.angle)
 
     def exit(self):
         self.dispatcher = None

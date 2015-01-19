@@ -16,6 +16,8 @@ class GameView(View):
         title = self._model.title.render("Game View", True, (255, 255, 255))
         surface.blit(title, (330, 100))
 
+        self._model.cards.draw(surface)
+
         pygame.display.flip()
 
     def exit(self):

@@ -8,6 +8,9 @@ from cards.card import Card
 
 class MagicCard(Card):
 
+    def __init__(self, image):
+        super(MagicCard, self).__init__(image)
+
     magic_types = ("physical", "magical")
 
     def magic_type(self, magic):

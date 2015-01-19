@@ -8,6 +8,9 @@ from cards.card import Card
 
 class Armor(Card):
 
+    def __init__(self, image):
+        super(Armor, self).__init__(image)
+
     armor_types = ("light", "heavy", "magic")
 
     def armor_type(self, armor):

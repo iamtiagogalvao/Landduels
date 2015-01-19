@@ -8,6 +8,9 @@ from cards.card import Card
 
 class Weapon(Card):
 
+    def __init__(self, image):
+        super(Weapon, self).__init__(image)
+
     weapon_types = ("blade", "axe", "magic_pole")
 
     def weapon_type(self, weapon):
