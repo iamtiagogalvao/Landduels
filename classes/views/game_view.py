@@ -14,7 +14,7 @@ class GameView(View):
         surface.fill((0,0,0))
 
         title = self._model.title.render("Game View", True, (255, 255, 255))
-        surface.blit(title, (400 - title.get_width() // 2, 100 - title.get_height() // 2))
+        surface.blit(title, (330, 100))
 
         pygame.display.flip()
 
