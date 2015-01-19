@@ -14,8 +14,8 @@ class TrapCard(Card):
     def __init__(self, *args, **kwargs):
         super(TrapCard, self).__init__(*args, **kwargs)
 
-    def verify_args(self, *args, **kwargs):
-        super(TrapCard, self).verify_args(*args, **kwargs)
+    def initialize_card(self, *args, **kwargs):
+        super(TrapCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Trap
 

@@ -14,8 +14,8 @@ class ActionCard(Card):
     def __init__(self, *args, **kwargs):
         super(ActionCard, self).__init__(*args, **kwargs)
 
-    def verify_args(self, *args, **kwargs):
-        super(ActionCard, self).verify_args(*args, **kwargs)
+    def initialize_card(self, *args, **kwargs):
+        super(ActionCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Action
 

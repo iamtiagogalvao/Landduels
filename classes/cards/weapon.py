@@ -14,8 +14,8 @@ class Weapon(Card):
     def __init__(self, *args, **kwargs):
         super(Weapon, self).__init__(*args, **kwargs)
 
-    def verify_args(self, *args, **kwargs):
-        super(Weapon, self).verify_args(*args, **kwargs)
+    def initialize_card(self, *args, **kwargs):
+        super(Weapon, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Weapon
 

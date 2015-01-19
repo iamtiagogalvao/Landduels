@@ -14,8 +14,8 @@ class Armor(Card):
     def __init__(self, *args, **kwargs):
         super(Armor, self).__init__(*args, **kwargs)
 
-    def verify_args(self, *args, **kwargs):
-        super(Armor, self).verify_args(*args, **kwargs)
+    def initialize_card(self, *args, **kwargs):
+        super(Armor, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Armor
 

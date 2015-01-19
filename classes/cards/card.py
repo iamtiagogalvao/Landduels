@@ -14,7 +14,7 @@ class Card(Sprite):
 
     def __init__(self, *args, **kwargs):
         super(Card, self).__init__()
-        self.verify_args(*args, **kwargs)
+        self.initialize_card(*args, **kwargs)
 
     def scale_card_image(self, factor):
         self._scale = factor
@@ -35,7 +35,7 @@ class Card(Sprite):
         self.y = y
         self.rect.center= (self.x, self.y)
 
-    def verify_args(self, *args, **kwargs):
+    def initialize_card(self, *args, **kwargs):
         if kwargs.has_key("card_type"):
             self.card_type = kwargs["card_type"]
         else:
