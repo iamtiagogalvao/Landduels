@@ -36,37 +36,13 @@ class Card(Sprite):
         self.rect.center= (self.x, self.y)
 
     def initialize_card(self, *args, **kwargs):
-        if kwargs.has_key("card_type"):
-            self.card_type = kwargs["card_type"]
-        else:
-            self.card_type = CardTypes.Invalid
-
-        if kwargs.has_key("mana_cost"):
-            self.mana_cost = kwargs["mana_cost"]
-        else:
-            self.mana_cost = 0
-
-        if kwargs.has_key("image"):
-            self._image = pygame.image.load(kwargs["image"]).convert()
-            self.image_path = kwargs["image"]
-        else:
-            self._image = pygame.image.load("res/img/wiseman.png").convert() # default
-            self.image_path = "res/img/wiseman.png"
-
-        if kwargs.has_key("name"):
-            self.name = kwargs["name"]
-        else:
-            self.name = "Unnamed"
-
-        if kwargs.has_key("attack"):
-            self.attack = kwargs["attack"]
-        else:
-            self.attack = 0
-
-        if kwargs.has_key("defense"):
-            self.defense = kwargs["defense"]
-        else:
-            self.defense = 0
+        self.card_type = kwargs["card_type"] if "card_type" in kwargs else CardTypes.Invalid
+        self.mana_cost = kwargs["mana_cost"] if "mana_cost" in kwargs else 0
+        self.image_path = kwargs["image"] if "image" in kwargs else "res/img/wiseman.png"
+        self._image = pygame.image.load(self.image_path).convert()
+        self.name = kwargs["name"] if "name" in kwargs else "Unnamed"
+        self.attack = kwargs["attack"] if "attack" in kwargs else 0
+        self.defense = kwargs["defense"] if "defense" in kwargs else 0
 
         # remaining defaults.
         self.image = self._image.copy()

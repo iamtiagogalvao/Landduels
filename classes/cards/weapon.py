@@ -18,11 +18,7 @@ class Weapon(Card):
         super(Weapon, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Weapon
-
-        if kwargs.has_key("weapon_type"):
-            self.weapon_type = kwargs["weapon_type"]
-        else:
-            self.weapon_type = WeaponTypes.Invalid
+        self.weapon_type = kwargs["weapon_type"] if "weapon_type" in kwargs else WeaponTypes.Invalid
 
     def __repr__(self):
         weapon_types= WeaponTypes.__dict__

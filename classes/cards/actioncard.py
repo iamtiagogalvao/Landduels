@@ -18,11 +18,7 @@ class ActionCard(Card):
         super(ActionCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Action
-
-        if kwargs.has_key("action_type"):
-            self.action_type = kwargs["action_type"]
-        else:
-            self.action_type = ActionTypes.Invalid
+        self.action_type = kwargs["action_type"] if "action_type" in kwargs else ActionTypes.Invalid
 
     def __repr__(self):
         action_types= ActionTypes.__dict__

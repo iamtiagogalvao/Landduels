@@ -18,11 +18,7 @@ class CreatureCard(Card):
         super(CreatureCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Creature
-
-        if kwargs.has_key("creature_type"):
-            self.creature_type = kwargs["creature_type"]
-        else:
-            self.creature_type = CreatureTypes.Invalid
+        self.creature_type = kwargs["creature_type"] if "creature_type" in kwargs else CreatureTypes.Invalid
 
     def __repr__(self):
         creature_types= CreatureTypes.__dict__

@@ -18,11 +18,7 @@ class TrapCard(Card):
         super(TrapCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Trap
-
-        if kwargs.has_key("trap_type"):
-            self.trap_type = kwargs["trap_type"]
-        else:
-            self.trap_type = TrapTypes.Invalid
+        self.trap_type = kwargs["trap_type"] if "trap_type" in kwargs else TrapTypes.Invalid
 
     def __repr__(self):
         trap_types= TrapTypes.__dict__

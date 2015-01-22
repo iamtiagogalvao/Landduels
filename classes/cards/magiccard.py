@@ -18,11 +18,7 @@ class MagicCard(Card):
         super(MagicCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Magic
-
-        if kwargs.has_key("magic_type"):
-            self.magic_type = kwargs["magic_type"]
-        else:
-            self.magic_type = MagicTypes.Invalid
+        self.magic_type = kwargs["magic_type"] if "magic_type" in kwargs else MagicTypes.Invalid
 
     def __repr__(self):
         magic_types= MagicTypes.__dict__
