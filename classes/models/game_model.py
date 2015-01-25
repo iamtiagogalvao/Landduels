@@ -10,8 +10,8 @@ class GameModel(Model):
         self.basic_font = "res/fonts/basic_bold.ttf"
         self.title = pygame.font.Font(self.basic_font, 24)
         self.card = ActionCard(image="res/img/wiseman.png")
-        self.card.scale_card_image(0.33)
-        self.card.position_card_image(400, 310)
+        self.card.scale(0.33)
+        self.card.position(400, 310)
         self.cards = Group(self.card)
 
     def enter(self, event_dispatcher):

@@ -16,21 +16,21 @@ class Card(Sprite):
         super(Card, self).__init__()
         self.initialize_card(*args, **kwargs)
 
-    def scale_card_image(self, factor):
+    def scale(self, factor):
         self._scale = factor
         self.image = self._image.copy()
         self.image = pygame.transform.rotozoom(self.image, self._angle, factor)
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
 
-    def rotate_card_image(self, angle):
+    def rotate(self, angle):
         self._angle = angle
         self.image = self._image.copy()
         self.image = pygame.transform.rotozoom(self.image, angle, self._scale)
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
 
-    def position_card_image(self, x, y):
+    def position(self, x, y):
         self.x = x
         self.y = y
         self.rect.center= (self.x, self.y)
