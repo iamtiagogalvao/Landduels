@@ -5,6 +5,7 @@
    #########################################################'''
 
 import pygame
+import uuid
 from pygame.sprite import Sprite
 from util.enum import enum
 
@@ -36,6 +37,7 @@ class Card(Sprite):
         self.rect.center= (self.x, self.y)
 
     def initialize_card(self, *args, **kwargs):
+        self.card_id = uuid.uuid1()
         self.card_type = kwargs["card_type"] if "card_type" in kwargs else CardTypes.Invalid
         self.mana_cost = kwargs["mana_cost"] if "mana_cost" in kwargs else 0
         self.image_path = kwargs["image"] if "image" in kwargs else "res/img/wiseman.png"
@@ -54,8 +56,9 @@ class Card(Sprite):
 
     def __repr__(self):
         card_types= CardTypes.__dict__
-        return "Card Name: {0}\nCard Image: {1}\nCard Type: {2}\nAttack: {3}\nDefense: {4}\nMana Cost: {5}".format(
+        return "Card Name: {0}\nCard ID: {1}\nCard Image: {2}\nCard Type: {3}\nAttack: {4}\nDefense: {5}\nMana Cost: {6}".format(
             self.name,
+            self.card_id,
             self.image_path,
             list(card_types)[card_types.values().index(self.card_type)],
             self.attack,
