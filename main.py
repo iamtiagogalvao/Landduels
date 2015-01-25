@@ -6,7 +6,6 @@ from cards.creaturecard import *
 from cards.actioncard import *
 from cards.weapon import *
 from cards.armor import *
-from util.enum import values
 
 # ------>>>> The code below is an example of the class methods!
 
@@ -15,25 +14,25 @@ pygame.init()
 pygame.display.set_mode((800, 600), pygame.HWSURFACE)
 
 #card types can be:
-print "CARD TYPES:", values(CardTypes)
+print "CARD TYPES:", CardTypes.values()
 
 #creature types can be:
-print "CREATURE TYPES:", values(CreatureTypes)
+print "CREATURE TYPES:", CreatureTypes.values()
 
 #trap types can be:
-print "TRAP TYPES:", values(TrapTypes)
+print "TRAP TYPES:", TrapTypes.values()
 
 #action card types can be:
-print "ACTION CARD TYPES:", values(ActionTypes)
+print "ACTION CARD TYPES:", ActionTypes.values()
 
 #magic card types can be:
-print "MAGIC CARD TYPES:", values(MagicTypes)
+print "MAGIC CARD TYPES:", MagicTypes.values()
 
 #weapon types can be:
-print "WEAPON TYPES CAN BE:", values(WeaponTypes)
+print "WEAPON TYPES CAN BE:", WeaponTypes.values()
 
 #armor types can be:
-print "ARMOR TYPES CAN BE:", values(ArmorTypes)
+print "ARMOR TYPES CAN BE:", ArmorTypes.values()
 
 
 # Define creature with CreatureCard class
