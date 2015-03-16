@@ -1,0 +1,27 @@
+{
+	"cards": [
+		{
+			"card_type" : "ActionCard",
+            "card_data" : [
+                {"card_name" : "Action Card Test"},
+                {"action_type" : "Player"},
+                {"attack" : 10.0},
+                {"defense" : 5.0},
+                {"mana_cost" : 20.0},
+                {"image" : "res/img/wiseman.png"}
+            ]
+		},
+
+        {
+            "card_type" : "Armor",
+            "card_data" : [
+                {"card_name" : "Armor Card Test"},
+                {"armor_type" : "Magic"},
+                {"attack" : 0.0},
+                {"defense" : 20.0},
+                {"mana_cost" : 0.0},
+                {"image" : "res/img/wiseman.png"}
+            ]
+        }
+	]
+}

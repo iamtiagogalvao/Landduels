@@ -1,11 +1,6 @@
 import pygame
 from cards.card import *
-from cards.magiccard import *
-from cards.trapcard import *
-from cards.creaturecard import *
-from cards.actioncard import *
-from cards.weapon import *
-from cards.armor import *
+from cards.deck import Deck
 
 # ------>>>> The code below is an example of the class methods!
 
@@ -32,34 +27,10 @@ print "MAGIC CARD TYPES:", MagicTypes.values()
 print "WEAPON TYPES CAN BE:", WeaponTypes.values()
 
 #armor types can be:
-print "ARMOR TYPES CAN BE:", ArmorTypes.values()
+print "ARMOR TYPES CAN BE:", ArmorTypes.values(), "\n"
 
+test_deck = Deck('classes/decks/starterdeck.json')
 
-# Define creature with CreatureCard class
-badcobra = CreatureCard(
-    name="Bad Cobra",
-    card_type=CardTypes.Creature,
-    creature_type=CreatureTypes.Animal,
-    attack=5,
-    defense=3)
-
-print "\n\n", badcobra
-
-
-#Defining a trap using TrapCard
-magicpunishment = TrapCard(
-    name="Magic Punishment",
-    card_type=CardTypes.Trap,
-    trap_type=TrapTypes.Player)
-
-print "\n\n", magicpunishment
-
-#Defining a magic card using MagicCard
-lavawind = MagicCard(
-    name="Lava Wind",
-    card_type=CardTypes.Magic,
-    magic_type=MagicTypes.Physical)
-
-print "\n\n", lavawind
-
+for card in test_deck.cards:
+    print card, "\n"
 

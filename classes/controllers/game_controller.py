@@ -14,7 +14,7 @@ class GameController(Controller):
     def update(self, dt):
         self.angle += 1
         self.angle = self.angle % 360
-        self._model.card.rotate(self.angle)
+        self._model.deck.cards[0].rotate(self.angle)
 
     def exit(self):
         self.dispatcher = None
