@@ -7,3 +7,11 @@ My idea is: the player has a start deck with pre chosen cards and then during ga
 can gain points, gold, mana whatever and exchange them for new cards.
 
 what do you Think?
+
+
+blank card info (card background)
+
+image rect
+ (36,68)     (364,68)
+
+ (36, 310)   (364, 310)

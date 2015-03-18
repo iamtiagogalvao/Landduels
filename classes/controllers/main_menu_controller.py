@@ -1,7 +1,6 @@
 import logging
-import weakref
 
-module_logger= logging.getLogger('landduels.main_menu_controller')
+module_logger = logging.getLogger('landduels.main_menu_controller')
 module_logger.setLevel(logging.DEBUG)
 
 from models.game_model import GameModel

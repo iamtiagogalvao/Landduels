@@ -8,7 +8,8 @@
                 {"attack" : 10.0},
                 {"defense" : 5.0},
                 {"mana_cost" : 20.0},
-                {"image" : "res/img/wiseman.png"}
+                {"tint" : [164, 200, 164]},
+                {"image" : "res/img/test.jpg"}
             ]
 		},
 
@@ -20,6 +21,7 @@
                 {"attack" : 0.0},
                 {"defense" : 20.0},
                 {"mana_cost" : 0.0},
+                {"tint" : [0,0,0]},
                 {"image" : "res/img/wiseman.png"}
             ]
         }

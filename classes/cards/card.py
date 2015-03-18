@@ -7,6 +7,7 @@
 import pygame
 import uuid
 from pygame.sprite import Sprite
+from pygame.sprite import Rect
 from util.enum import enum
 
 CardTypes = enum("Invalid", "Creature", "Magic", "Trap", "Action", "Armor", "Weapon")
@@ -19,14 +20,14 @@ class Card(Sprite):
 
     def scale(self, factor):
         self._scale = factor
-        self.image = self._image.copy()
+        self.image = self.card.copy()
         self.image = pygame.transform.rotozoom(self.image, self._angle, factor)
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
 
     def rotate(self, angle):
         self._angle = angle
-        self.image = self._image.copy()
+        self.image = self.card.copy()
         self.image = pygame.transform.rotozoom(self.image, angle, self._scale)
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
@@ -36,18 +37,38 @@ class Card(Sprite):
         self.y = y
         self.rect.center = (x, y)
 
+    def tint_surface(self, surface, colour, original=None ):
+        tintSurf = pygame.Surface( surface.get_size()).convert_alpha()
+        tintSurf.fill( colour )
+        if original != None:
+            surface.blit( original, (0,0) )
+        surface.blit( tintSurf, (0,0), special_flags=pygame.BLEND_RGB_MULT )
+
     def initialize_card(self, *args, **kwargs):
         self.card_id = uuid.uuid1()
+        self.card = pygame.image.load("res/img/blank_card.png").convert_alpha()
+        self.tint = tuple(kwargs["tint"]) if "tint" in kwargs else (0,0,0,0)
+        self.tint_surface(self.card, self.tint, self.card)
+
         self.card_type = kwargs["card_type"] if "card_type" in kwargs else CardTypes.Invalid
         self.mana_cost = kwargs["mana_cost"] if "mana_cost" in kwargs else 0
         self.image_path = kwargs["image"] if "image" in kwargs else "res/img/wiseman.png"
         self._image = pygame.image.load(self.image_path).convert()
-        self.name = kwargs["card_name"] if "card_name" in kwargs else "Unnamed"
+        self._image = pygame.transform.scale(self._image, (328,242))
+
+        self.card.blit(self._image, Rect((36,68),(242,328)))
+
+        self.card_name = kwargs["card_name"] if "card_name" in kwargs else "Unnamed"
+
+        font = pygame.font.Font("res/fonts/Goudy Mediaeval DemiBold.ttf", 24)
+        text = font.render(self.card_name, 1, (10, 10, 10))
+        self.card.blit(text, Rect((36,34), text.get_size()))
+
         self.attack = kwargs["attack"] if "attack" in kwargs else 0
         self.defense = kwargs["defense"] if "defense" in kwargs else 0
 
         # remaining defaults.
-        self.image = self._image.copy()
+        self.image = self.card.copy()
         self.rect = self.image.get_rect()
         self._scale = 1.0
         self._angle = 0.0
@@ -60,7 +81,7 @@ class Card(Sprite):
     def __repr__(self):
         card_types= CardTypes.__dict__
         return "Card Name: {0}\nCard ID: {1}\nCard Image: {2}\nCard Type: {3}\nAttack: {4}\nDefense: {5}\nMana Cost: {6}".format(
-            self.name,
+            self.card_name,
             self.card_id,
             self.image_path,
             list(card_types)[card_types.values().index(self.card_type)],
