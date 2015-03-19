@@ -11,10 +11,10 @@ class GameView(View):
         self.dispatcher = event_dispatcher
 
     def render(self, surface):
-        surface.fill((0,0,0))
+        surface.fill((32,32,32))
 
         title = self._model.title.render("Game View", True, (255, 255, 255))
-        surface.blit(title, (330, 100))
+        surface.blit(title, (330, 40))
 
         self._model.cards.draw(surface)
 

@@ -44,6 +44,44 @@ class Card(Sprite):
             surface.blit(original, (0, 0))
         surface.blit(tint_surf, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
+    def draw_wrapped_text(self, surface, text, color, rect, font, aa=False, bkg=None):
+        rect = Rect(rect)
+        y = rect.top
+        line_spacing = -2
+
+        # get the height of the font
+        font_height = font.size("Tg")[1]
+
+        while text:
+            i = 1
+
+            # determine if the row of text will be outside our area
+            if y + font_height > rect.bottom:
+                break
+
+            # determine maximum width of line
+            while font.size(text[:i])[0] < rect.width and i < len(text):
+                i += 1
+
+            # if we've wrapped the text, then adjust the wrap to the last word
+            if i > len(text):
+                i = text.rfind(" ", 0, i) + 1
+
+            # render the line and blit it to the surface
+            if bkg:
+                image = font.render(text[:i], 1, color, bkg)
+                image.set_colorkey(bkg)
+            else:
+                image = font.render(text[:i], aa, color)
+
+            surface.blit(image, (rect.left, y))
+            y += font_height + line_spacing
+
+            # remove the text we just blitted
+            text = text[i:]
+
+        return text
+
     def get_card_type_string(self):
         card_types = CardTypes.__dict__
         return str(list(card_types)[card_types.values().index(self.card_type)])
@@ -64,13 +102,19 @@ class Card(Sprite):
         self._image = pygame.image.load(self.image_path).convert()
         self._image = pygame.transform.scale(self._image, (328, 242))
 
-        self.card.blit(self._image, Rect((36, 68), (242, 328)))
+        self.card.blit(self._image, Rect((36, 68), (328, 242)))
 
         self.card_name = kwargs["card_name"] if "card_name" in kwargs else "Unnamed"
 
         font = pygame.font.Font("res/fonts/Goudy Mediaeval DemiBold.ttf", 24)
         text = font.render(self.card_name, 1, (10, 10, 10))
         self.card.blit(text, Rect((38, 34), text.get_size()))
+
+        self.card_description = kwargs["card_description"] if "card_description" else "Card description."
+
+        font = pygame.font.Font("res/fonts/mplantin.ttf", 18)
+        self.draw_wrapped_text(
+            self.card, self.card_description, (10, 10, 10), Rect((36,355), (320,150)), font)
 
         self.attack = kwargs["attack"] if "attack" in kwargs else 0
         self.defense = kwargs["defense"] if "defense" in kwargs else 0

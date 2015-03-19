@@ -3,9 +3,10 @@
 		{
             "card_python_class" : "ActionCard",
             "card_data" : [
-                {"card_name" : "Three Eyed Demolishing Tiger"},
+                {"card_name" : "Fiery Three Eyed Tiger"},
                 {"card_type" : "Action"},
-                {"card_description" : "A tiger comes out of nowhere and eats your face."},
+                {"card_description" :
+                "A fiery three eyed tiger comes out of nowhere and eats your face off. The tiger burns."},
                 {"action_type" : "Player"},
                 {"attack" : 10.0},
                 {"defense" : 5.0},
