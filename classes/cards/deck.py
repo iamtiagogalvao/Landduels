@@ -14,10 +14,10 @@ class Deck(object):
             self.add_card(card)
 
     def add_card(self, card):
-        module= 'cards.card'
-        class_name= card.get('card_type')
-        card_data= card.get('card_data')
-        kwargs= {}
+        module = 'cards.card'
+        class_name = card.get('card_python_class')
+        card_data = card.get('card_data')
+        kwargs = {}
         for constructor_arg in card_data:
             kwargs.update(constructor_arg)
         imported_module= __import__(module, fromlist=['all'])

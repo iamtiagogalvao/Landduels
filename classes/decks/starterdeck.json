@@ -1,9 +1,11 @@
 {
 	"cards": [
 		{
-			"card_type" : "ActionCard",
+            "card_python_class" : "ActionCard",
             "card_data" : [
-                {"card_name" : "Action Card Test"},
+                {"card_name" : "Three Eyed Demolishing Tiger"},
+                {"card_type" : "Action"},
+                {"card_description" : "A tiger comes out of nowhere and eats your face."},
                 {"action_type" : "Player"},
                 {"attack" : 10.0},
                 {"defense" : 5.0},
@@ -14,9 +16,11 @@
 		},
 
         {
-            "card_type" : "Armor",
+            "card_python_class" : "Armor",
             "card_data" : [
                 {"card_name" : "Armor Card Test"},
+                {"card_type" : "Armor"},
+                {"card_description" : "Some rusty armor."},
                 {"armor_type" : "Magic"},
                 {"attack" : 0.0},
                 {"defense" : 20.0},
