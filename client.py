@@ -1,24 +1,5 @@
+from events.eventlog import logger
 import pygame
-import logging
-
-logger= logging.getLogger('landduels')
-logger.setLevel(logging.DEBUG)
-
-file_handler= logging.FileHandler('game.events.log', mode='w')
-file_handler.setLevel(logging.DEBUG)
-
-console_handler= logging.StreamHandler()
-console_handler.setLevel(logging.DEBUG)
-
-log_formatter= logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(log_formatter)
-console_handler.setFormatter(log_formatter)
-
-logger.addHandler(file_handler)
-logger.addHandler(console_handler)
-
-logger.info('Game: Starting up the game...')
-
 import ConfigParser
 from events.event import PyGameEventProcessor
 from events.event import QuitEvent
@@ -29,9 +10,7 @@ from views.main_menu_view import MainMenuView
 from controllers.main_menu_controller import MainMenuController
 
 
-
 class Game(object):
-
     def __init__(self):
         self.display_surf = None
         self.clock = None
@@ -41,21 +20,21 @@ class Game(object):
 
         self.model = None
         self.view = None
-        self.controller= None
+        self.controller = None
 
         self.event_processor = PyGameEventProcessor()
         self.event_dispatcher = self.event_processor.get_dispatcher()
 
-        self._connections= [
+        self._connections = [
             self.event_dispatcher.subscribe_to_event(QuitEvent, Command(self.exit))
         ]
         self.is_running = True
 
     def init(self):
         pygame.init()
-        width= int(self.config.get("Graphics", "Width"))
-        height= int(self.config.get("Graphics", "Height"))
-        self.display_surf= pygame.display.set_mode((width, height), pygame.HWSURFACE)
+        width = int(self.config.get("Graphics", "Width"))
+        height = int(self.config.get("Graphics", "Height"))
+        self.display_surf = pygame.display.set_mode((width, height), pygame.HWSURFACE)
 
         self.set_mvc(MainMenuModel(), MainMenuView(), MainMenuController())
 
@@ -63,6 +42,7 @@ class Game(object):
         return True
 
     def exit(self, event):
+        logger.info('Game: Shutting down the game client...')
         self.is_running = False
 
     def run(self):
@@ -73,8 +53,6 @@ class Game(object):
             self.controller.update(dt)
             self.view.render(self.display_surf)
         pygame.quit()
-
-    
 
     def set_mvc(self, model, view, controller):
         if self.model:
@@ -97,8 +75,10 @@ class Game(object):
 
 
 if __name__ == "__main__":
-    game = Game()
+    logger.info('Game: Starting up the game client...')
     logger.info('Game: Calling Game.init()...')
+
+    game = Game()
     if game.init():
         game.run()
 

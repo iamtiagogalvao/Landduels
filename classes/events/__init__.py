@@ -1,5 +1,6 @@
 __all__ = [
     'command',
     'dispatch',
-    'event'
+    'event',
+    'eventlog'
 ]
