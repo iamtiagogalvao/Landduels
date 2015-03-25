@@ -44,7 +44,7 @@ class MainMenuModel(Model):
         self.title = pygame.font.Font(self.title_font, 200)
 
     def enter(self, event_dispatcher):
-        self.buttons.append(PlayButton("play_button", "res/img/play.png", event_dispatcher, 220, 300))
+        self.buttons.append(PlayButton("play_button", "res/img/play.png", event_dispatcher, 480, 500))
         self.menu = Group(self.buttons)
 
     def exit(self):

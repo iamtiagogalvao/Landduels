@@ -1,5 +1,20 @@
 {
 	"cards": [
+        {
+            "card_python_class" : "Armor",
+            "card_data" : [
+                {"card_name" : "Armor Card Test"},
+                {"card_type" : "Armor"},
+                {"card_description" : "Some rusty armor."},
+                {"armor_type" : "Magic"},
+                {"attack" : 0.0},
+                {"defense" : 20.0},
+                {"mana_cost" : 0.0},
+                {"tint" : [255,255,220]},
+                {"image" : "res/img/ash.jpg"}
+            ]
+        },
+
 		{
             "card_python_class" : "ActionCard",
             "card_data" : [
@@ -14,21 +29,6 @@
                 {"tint" : [164, 200, 164]},
                 {"image" : "res/img/test.jpg"}
             ]
-		},
-
-        {
-            "card_python_class" : "Armor",
-            "card_data" : [
-                {"card_name" : "Armor Card Test"},
-                {"card_type" : "Armor"},
-                {"card_description" : "Some rusty armor."},
-                {"armor_type" : "Magic"},
-                {"attack" : 0.0},
-                {"defense" : 20.0},
-                {"mana_cost" : 0.0},
-                {"tint" : [0,0,0]},
-                {"image" : "res/img/wiseman.png"}
-            ]
-        }
+		}
 	]
 }

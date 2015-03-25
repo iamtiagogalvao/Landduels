@@ -14,7 +14,7 @@ class GameView(View):
         surface.fill((32,32,32))
 
         title = self._model.title.render("Game View", True, (255, 255, 255))
-        surface.blit(title, (330, 40))
+        surface.blit(title, (580, 40))
 
         self._model.cards.draw(surface)
 

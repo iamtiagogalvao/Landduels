@@ -11,8 +11,10 @@ class GameModel(Model):
         self.title = pygame.font.Font(self.basic_font, 24)
         self.deck = Deck('classes/decks/starterdeck.json')
         self.deck.cards[0].scale(0.6)
-        self.deck.cards[0].position(400, 320)
-        self.cards = Group(self.deck.cards[0])
+        self.deck.cards[0].position(410, 420)
+        self.deck.cards[1].scale(0.6)
+        self.deck.cards[1].position(850, 420)
+        self.cards = Group(self.deck.cards)
 
     def enter(self, event_dispatcher):
         self.dispatcher = event_dispatcher

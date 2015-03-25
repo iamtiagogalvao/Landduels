@@ -74,6 +74,8 @@ class Game(object):
             self.view.render(self.display_surf)
         pygame.quit()
 
+    
+
     def set_mvc(self, model, view, controller):
         if self.model:
             self.model.exit()

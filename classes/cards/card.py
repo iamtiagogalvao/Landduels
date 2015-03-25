@@ -187,6 +187,13 @@ class Armor(Card):
         self.card_type = CardTypes.Armor
         self.armor_type = ArmorTypes.__dict__[kwargs["armor_type"]] if "armor_type" in kwargs else ArmorTypes.Invalid
 
+        self.card_type_description += " -- "
+        self.card_type_description += self.get_armor_type_string()
+
+        font = pygame.font.Font("res/fonts/Goudy Mediaeval DemiBold.ttf", 24)
+        text = font.render(self.card_type_description, 1, (10, 10, 10))
+        self.card.blit(text, Rect((38, 315), text.get_size()))
+
     def __repr__(self):
         return "{0}\nArmor Type: {1}".format(
             super(Armor, self).__repr__(),
