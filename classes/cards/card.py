@@ -12,8 +12,8 @@ from util.enum import enum
 
 CardTypes = enum("Invalid", "Creature", "Magic", "Trap", "Action", "Armor", "Weapon")
 
-class Card(Sprite):
 
+class Card(Sprite):
     def __init__(self, *args, **kwargs):
         super(Card, self).__init__()
         self.initialize_card(*args, **kwargs)
@@ -37,7 +37,7 @@ class Card(Sprite):
         self.y = y
         self.rect.center = (x, y)
 
-    def tint_surface(self, surface, colour, original=None ):
+    def tint_surface(self, surface, colour, original=None):
         tint_surf = pygame.Surface(surface.get_size()).convert_alpha()
         tint_surf.fill(colour)
         if original is not None:
@@ -115,7 +115,7 @@ class Card(Sprite):
 
         font = pygame.font.Font("res/fonts/mplantin.ttf", 18)
         self.draw_wrapped_text(
-            self.card, self.card_description, (10, 10, 10), Rect((36,355), (320,150)), font)
+            self.card, self.card_description, (10, 10, 10), Rect((36, 355), (320, 150)), font)
 
         self.attack = kwargs["attack"] if "attack" in kwargs else 0
         self.defense = kwargs["defense"] if "defense" in kwargs else 0
@@ -144,8 +144,8 @@ class Card(Sprite):
 
 ActionTypes = enum("Invalid", "Player", "Enemy")
 
-class ActionCard(Card):
 
+class ActionCard(Card):
     def __init__(self, *args, **kwargs):
         super(ActionCard, self).__init__(*args, **kwargs)
 
@@ -157,7 +157,8 @@ class ActionCard(Card):
     def initialize_card(self, *args, **kwargs):
         super(ActionCard, self).initialize_card(*args, **kwargs)
 
-        self.action_type = ActionTypes.__dict__[kwargs["action_type"]] if "action_type" in kwargs else ActionTypes.Invalid
+        self.action_type = ActionTypes.__dict__[
+            kwargs["action_type"]] if "action_type" in kwargs else ActionTypes.Invalid
 
         self.card_type_description += " -- "
         self.card_type_description += self.get_action_type_string()
@@ -174,10 +175,10 @@ class ActionCard(Card):
 
 ArmorTypes = enum("Invalid", "Light", "Heavy", "Magic")
 
-class Armor(Card):
 
+class ArmorCard(Card):
     def __init__(self, *args, **kwargs):
-        super(Armor, self).__init__(*args, **kwargs)
+        super(ArmorCard, self).__init__(*args, **kwargs)
 
     def get_armor_type_string(self):
         armor_types = ArmorTypes.__dict__
@@ -185,7 +186,7 @@ class Armor(Card):
         return str(list(armor_types)[armor_type_values.index(self.armor_type)])
 
     def initialize_card(self, *args, **kwargs):
-        super(Armor, self).initialize_card(*args, **kwargs)
+        super(ArmorCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Armor
         self.armor_type = ArmorTypes.__dict__[kwargs["armor_type"]] if "armor_type" in kwargs else ArmorTypes.Invalid
@@ -199,14 +200,14 @@ class Armor(Card):
 
     def __repr__(self):
         return "{0}\nArmor Type: {1}".format(
-            super(Armor, self).__repr__(),
+            super(ArmorCard, self).__repr__(),
             self.get_armor_type_string())
 
 
 CreatureTypes = enum("Invalid", "Human", "Animal", "MagicBeing", "ShadowBeing", "LightBeing")
 
-class CreatureCard(Card):
 
+class CreatureCard(Card):
     def __init__(self, *args, **kwargs):
         super(CreatureCard, self).__init__(*args, **kwargs)
 
@@ -218,7 +219,8 @@ class CreatureCard(Card):
         super(CreatureCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Creature
-        self.creature_type = CreatureTypes.__dict__[kwargs["creature_type"]] if "creature_type" in kwargs else CreatureTypes.Invalid
+        self.creature_type = CreatureTypes.__dict__[
+            kwargs["creature_type"]] if "creature_type" in kwargs else CreatureTypes.Invalid
 
     def __repr__(self):
         return "{0}\nCreature Type: {1}".format(
@@ -228,8 +230,8 @@ class CreatureCard(Card):
 
 MagicTypes = enum("Invalid", "Physical", "Magical")
 
-class MagicCard(Card):
 
+class MagicCard(Card):
     def __init__(self, *args, **kwargs):
         super(MagicCard, self).__init__(*args, **kwargs)
 
@@ -251,8 +253,8 @@ class MagicCard(Card):
 
 TrapTypes = enum("Invalid", "Player", "Enemy")
 
-class TrapCard(Card):
 
+class TrapCard(Card):
     def __init__(self, *args, **kwargs):
         super(TrapCard, self).__init__(*args, **kwargs)
 
@@ -274,23 +276,23 @@ class TrapCard(Card):
 
 WeaponTypes = enum("Invalid", "Blade", "Axe", "MagicPole")
 
-class Weapon(Card):
 
+class WeaponCard(Card):
     def __init__(self, *args, **kwargs):
-        super(Weapon, self).__init__(*args, **kwargs)
+        super(WeaponCard, self).__init__(*args, **kwargs)
 
     def get_weapon_type_string(self):
         weapon_types = WeaponTypes.__dict__
         return str(list(weapon_types)[weapon_types.values().index(self.weapon_type)])
 
     def initialize_card(self, *args, **kwargs):
-        super(Weapon, self).initialize_card(*args, **kwargs)
+        super(WeaponCard, self).initialize_card(*args, **kwargs)
 
         self.card_type = CardTypes.Weapon
-        self.weapon_type = WeaponTypes.__dict__[kwargs["weapon_type"]] if "weapon_type" in kwargs else WeaponTypes.Invalid
+        self.weapon_type = WeaponTypes.__dict__[
+            kwargs["weapon_type"]] if "weapon_type" in kwargs else WeaponTypes.Invalid
 
     def __repr__(self):
         return "{0}\nWeapon Type: {1}".format(
-            super(Weapon, self).__repr__(),
+            super(WeaponCard, self).__repr__(),
             self.get_weapon_type_string())
-

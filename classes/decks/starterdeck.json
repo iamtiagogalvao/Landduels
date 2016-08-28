@@ -1,7 +1,7 @@
 {
 	"cards": [
         {
-            "card_python_class" : "Armor",
+            "card_python_class" : "ArmorCard",
             "card_data" : [
                 {"card_name" : "Armor Card Test"},
                 {"card_type" : "Armor"},
