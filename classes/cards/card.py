@@ -84,7 +84,8 @@ class Card(Sprite):
 
     def get_card_type_string(self):
         card_types = CardTypes.__dict__
-        return str(list(card_types)[card_types.values().index(self.card_type)])
+        card_type_values = list(card_types.values())
+        return str(list(card_types)[card_type_values.index(self.card_type)])
 
     def initialize_card(self, *args, **kwargs):
         self.card_id = uuid.uuid1()
@@ -150,7 +151,8 @@ class ActionCard(Card):
 
     def get_action_type_string(self):
         action_types = ActionTypes.__dict__
-        return str(list(action_types)[action_types.values().index(self.action_type)])
+        action_type_values = list(action_types.values())
+        return str(list(action_types)[action_type_values.index(self.action_type)])
 
     def initialize_card(self, *args, **kwargs):
         super(ActionCard, self).initialize_card(*args, **kwargs)
@@ -179,7 +181,8 @@ class Armor(Card):
 
     def get_armor_type_string(self):
         armor_types = ArmorTypes.__dict__
-        return str(list(armor_types)[armor_types.values().index(self.armor_type)])
+        armor_type_values = list(armor_types.values())
+        return str(list(armor_types)[armor_type_values.index(self.armor_type)])
 
     def initialize_card(self, *args, **kwargs):
         super(Armor, self).initialize_card(*args, **kwargs)

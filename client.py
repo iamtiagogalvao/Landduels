@@ -1,6 +1,6 @@
-from events.eventlog import logger
 import pygame
-import ConfigParser
+import configparser 
+from events.eventlog import logger
 from events.event import PyGameEventProcessor
 from events.event import QuitEvent
 from events.command import Command
@@ -15,7 +15,7 @@ class Game(object):
         self.display_surf = None
         self.clock = None
 
-        self.config = ConfigParser.ConfigParser()
+        self.config = configparser.ConfigParser()
         self.config.read("landduels.ini")
 
         self.model = None

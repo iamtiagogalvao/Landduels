@@ -60,7 +60,7 @@ class PyGameEventProcessor(EventProcessor):
 
     def process_events(self):
         for pygame_event in pygame.event.get():
-            if _event_lookup.has_key(pygame_event.type):
+            if pygame_event.type in _event_lookup.keys():
                 self._event_queue.append(_event_lookup[pygame_event.type](pygame_event))
         for event in self._event_queue:
             self._dispatcher.dispatch_event(event)
