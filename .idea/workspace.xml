@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d9b5d55f-543b-4345-9d38-dc4551acb4d0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/cards/card.py" afterPath="$PROJECT_DIR$/classes/cards/card.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/decks/starterdeck.json" afterPath="$PROJECT_DIR$/classes/decks/starterdeck.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/models/game_model.py" afterPath="$PROJECT_DIR$/classes/models/game_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/ui/button.py" afterPath="$PROJECT_DIR$/classes/ui/button.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/util/enum.py" afterPath="$PROJECT_DIR$/classes/util/enum.py" />
     </list>
     <ignored path="Landduels.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -587,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1472415854467</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="renamed a few classes">
+      <created>1472416772691</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1472416772691</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -651,7 +653,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial work to handle game event processing." />
     <MESSAGE value="Fixes for python 3.5.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes for python 3.5.1" />
+    <MESSAGE value="renamed a few classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed a few classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
