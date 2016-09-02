@@ -7,8 +7,6 @@ class GameModel(Model):
     def __init__(self):
         self.dispatcher = None
         self.connections = []
-        self.basic_font = "res/fonts/basic_bold.ttf"
-        self.title = pygame.font.Font(self.basic_font, 24)
         self.deck = Deck('classes/decks/starterdeck.json')
         self.deck.cards[0].scale(0.8)
         self.deck.cards[0].position(300, 420)

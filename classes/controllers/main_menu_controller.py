@@ -24,6 +24,7 @@ class MainMenuController(Controller):
     def __init__(self):
         self._app = None
         self._model = None
+        self._view = None
         self.dispatcher= None
         self.connections = []
 
@@ -42,11 +43,12 @@ class MainMenuController(Controller):
     def exit(self):
         self._app = None
         self._model = None
+        self._view = None
         self.dispatcher = None
         self.connections = []
 
     def on_mouse_move(self, event):
-        for button in self._model.buttons:
+        for button in self._view.buttons:
             if button.state == ButtonState.NORMAL:
                 if self.mouse_is_over(button.rect, event.data.pos):
                     self.dispatcher.dispatch_event(MouseEnteredButtonEvent(button.id))
@@ -55,12 +57,12 @@ class MainMenuController(Controller):
                     self.dispatcher.dispatch_event(MouseLeftButtonEvent(button.id))
 
     def on_mouse_button_down(self, event):
-        for button in self._model.buttons:
+        for button in self._view.buttons:
             if self.mouse_is_over(button.rect, event.data.pos):
                 self.dispatcher.dispatch_event(ButtonClickedEvent(button.id))
 
     def on_mouse_button_up(self, event):
-        for button in self._model.buttons:
+        for button in self._view.buttons:
             if self.mouse_is_over(button.rect, event.data.pos):
                 self.dispatcher.dispatch_event(ButtonClickEndedEvent(button.id))
 
@@ -69,7 +71,10 @@ class MainMenuController(Controller):
 
     def on_game_started(self, event):
         module_logger.info("MainMenuController: on_game_started called.")
-        self._app.set_mvc(GameModel(), GameView(), GameController())
+        model = GameModel()
+        view = GameView(model)
+        controller = GameController()
+        self._app.set_mvc(model, view, controller)
 
     def get_model(self):
         return self._model
@@ -78,6 +83,14 @@ class MainMenuController(Controller):
         self._model = model
 
     model = property(get_model, set_model)
+
+    def get_view(self):
+        return self._view
+
+    def set_view(self, view):
+        self._view = view
+
+    view = property(get_view, set_view)
 
     def get_app(self):
         return self._app

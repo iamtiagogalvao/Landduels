@@ -15,11 +15,3 @@ class View(object):
     def exit(self):
         pass
 
-    def get_model(self):
-        return self.model
-
-    def set_model(self, model):
-        self.model = model
-
-    model = abstractproperty(get_model, set_model)
-

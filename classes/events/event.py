@@ -52,7 +52,9 @@ class EventProcessor(object):
         return self._dispatcher
 
     def process_events(self):
-        pass
+        for event in self._event_queue:
+            self._dispatcher.dispatch_event(event)
+        self._event_queue = []
 
 class PyGameEventProcessor(EventProcessor):
     def __init__(self):
@@ -62,6 +64,4 @@ class PyGameEventProcessor(EventProcessor):
         for pygame_event in pygame.event.get():
             if pygame_event.type in _event_lookup.keys():
                 self._event_queue.append(_event_lookup[pygame_event.type](pygame_event))
-        for event in self._event_queue:
-            self._dispatcher.dispatch_event(event)
-        self._event_queue= []
+        super(PyGameEventProcessor, self).process_events()

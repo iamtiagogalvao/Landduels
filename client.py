@@ -60,18 +60,18 @@ class Game(object):
         self.model = model
         self.model.enter(self.event_dispatcher)
 
+        if self.view:
+            self.view.exit()
+        self.view = view
+        self.view.enter(self.event_dispatcher)
+
         if self.controller:
             self.controller.exit()
         self.controller = controller
         self.controller.set_app(self)
         self.controller.set_model(self.model)
+        self.controller.set_view(self.view)
         self.controller.enter(self.event_dispatcher)
-
-        if self.view:
-            self.view.exit()
-        self.view = view
-        self.view.set_model(self.model)
-        self.view.enter(self.event_dispatcher)
 
 
 if __name__ == "__main__":

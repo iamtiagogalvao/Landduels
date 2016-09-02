@@ -3,6 +3,7 @@ from controllers.controller import Controller
 class GameController(Controller):
     def __init__(self):
         self._model = None
+        self._view = None
         self.dispatcher = None
         self.connections = []
         self.angle= 0
@@ -25,6 +26,14 @@ class GameController(Controller):
 
     def set_model(self, model):
         self._model = model
+
+    model = property(get_model, set_model)
+
+    def get_view(self):
+        return self._view
+
+    def set_view(self, view):
+        self._view = view
 
     model = property(get_model, set_model)
 
