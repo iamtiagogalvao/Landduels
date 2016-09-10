@@ -23,8 +23,6 @@ class MainMenuController(Controller):
 
     def __init__(self):
         self._app = None
-        self._model = None
-        self._view = None
         self.dispatcher= None
         self.connections = []
 
@@ -42,8 +40,6 @@ class MainMenuController(Controller):
 
     def exit(self):
         self._app = None
-        self._model = None
-        self._view = None
         self.dispatcher = None
         self.connections = []
 

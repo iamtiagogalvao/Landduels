@@ -18,22 +18,6 @@ class Controller(object):
     def exit(self):
         pass
 
-    def get_model(self):
-        return self.model
-
-    def set_model(self, model):
-        self.model = model
-
-    model = abstractproperty(get_model, set_model)
-
-    def get_view(self):
-        return self.view
-
-    def set_view(self, view):
-        self.view = view
-
-    view = abstractproperty(get_view, set_view)
-
     def get_app(self):
         return self.app
 
