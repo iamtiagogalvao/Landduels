@@ -1,46 +1,24 @@
-from controllers.controller import Controller
+from events.event import TickEvent
+from events.event import QuitEvent
+from events.command import Command
 
-class GameController(Controller):
-    def __init__(self):
-        self._model = None
-        self._view = None
-        self.dispatcher = None
-        self.connections = []
-        self.angle= 0
 
-    def enter(self, event_dispatcher):
-        self.dispatcher = event_dispatcher
+class GameController(object):
+    def __init__(self, model, event_dispatcher):
+        self._model = model
+        self.angle = 0
+        self.event_dispatcher = event_dispatcher
+        self.connections = [
+            self.event_dispatcher.subscribe_to_event(TickEvent, Command(self.update)),
+            self.event_dispatcher.subscribe_to_event(QuitEvent, Command(self.dispose))
+        ]
 
     def update(self, dt):
         self.angle += 0.1
-        self.angle = self.angle % 360
+        self.angle %= 360
         self._model.deck.cards[0].rotate(-self.angle)
         self._model.deck.cards[1].rotate(self.angle)
 
-    def exit(self):
-        self.dispatcher = None
+    def dispose(self, event):
+        self.event_dispatcher = None
         self.connections = []
-
-    def get_model(self):
-        return self._model
-
-    def set_model(self, model):
-        self._model = model
-
-    model = property(get_model, set_model)
-
-    def get_view(self):
-        return self._view
-
-    def set_view(self, view):
-        self._view = view
-
-    model = property(get_model, set_model)
-
-    def get_app(self):
-        return self._app
-
-    def set_app(self, app):
-        self._app = app
-
-    app = property(get_app, set_app)

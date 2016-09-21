@@ -1,5 +1,6 @@
 __all__= [
-    'controller',
     'main_menu_controller',
-    'game_controller'
+    'game_controller',
+    'mouse_controller',
+    'tick_controller',
 ]

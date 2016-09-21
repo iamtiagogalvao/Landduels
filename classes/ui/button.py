@@ -14,8 +14,8 @@ from util.enum import enum
 
 ButtonState = enum('NORMAL', 'MOUSEOVER', 'PRESSED')
 
-class Button(Sprite):
 
+class Button(Sprite):
     def __init__(self, id, imagepath, event_dispatcher, x, y):
         super(Button, self).__init__()
 

@@ -1,9 +1,8 @@
 import logging
-
-module_logger= logging.getLogger('landduels.dispatch')
-module_logger.setLevel(logging.DEBUG)
-
 import weakref
+
+module_logger = logging.getLogger('landduels.dispatch')
+module_logger.setLevel(logging.DEBUG)
 
 
 class EventDispatcher(object):
@@ -11,7 +10,7 @@ class EventDispatcher(object):
         self._subscribers = weakref.WeakKeyDictionary()
 
     def subscribe_to_event(self, event_class, subscriber):
-        entry= EventDispatcherEntry(self, event_class, subscriber)
+        entry = EventDispatcherEntry(self, event_class, subscriber)
         self._subscribers.setdefault(event_class, []).append(weakref.ref(entry))
         return entry
 
@@ -33,6 +32,6 @@ class EventDispatcher(object):
 
 class EventDispatcherEntry(object):
     def __init__(self, dispatcher, event, subscriber):
-            self._dispatcher= dispatcher
-            self._lookup= event
-            self._subscriber= subscriber
+            self._dispatcher = dispatcher
+            self._lookup = event
+            self._subscriber = subscriber
