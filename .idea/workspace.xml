@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9b5d55f-543b-4345-9d38-dc4551acb4d0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/controllers/mouse_controller.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/controllers/tick_controller.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/controllers/controller.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/models/model.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/views/options_menu_view.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/views/view.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/controllers/__init__.py" afterPath="$PROJECT_DIR$/classes/controllers/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/controllers/game_controller.py" afterPath="$PROJECT_DIR$/classes/controllers/game_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/controllers/main_menu_controller.py" afterPath="$PROJECT_DIR$/classes/controllers/main_menu_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/events/dispatch.py" afterPath="$PROJECT_DIR$/classes/events/dispatch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/events/event.py" afterPath="$PROJECT_DIR$/classes/events/event.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/models/__init__.py" afterPath="$PROJECT_DIR$/classes/models/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/models/game_model.py" afterPath="$PROJECT_DIR$/classes/models/game_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/models/main_menu_model.py" afterPath="$PROJECT_DIR$/classes/models/main_menu_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/ui/button.py" afterPath="$PROJECT_DIR$/classes/ui/button.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/views/game_view.py" afterPath="$PROJECT_DIR$/classes/views/game_view.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/views/main_menu_view.py" afterPath="$PROJECT_DIR$/classes/views/main_menu_view.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.py" afterPath="$PROJECT_DIR$/client.py" />
     </list>
     <ignored path="Landduels.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -532,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473524333230</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Moving some more stuff around to prepare for networked stuff">
+      <created>1474429033159</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1474429033159</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
